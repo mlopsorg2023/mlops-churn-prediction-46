@@ -16,7 +16,7 @@
       "asset_ref_type": "notebook",
       "configuration": {
         "env_id": "rt222py",
-        "file_ref": "assets/notebooks/customer-churn-prediction.ipynb",
+        "file_ref": "src/customer-churn-prediction.ipynb",
         "entrypoint": "",
         "env_type": "notebook",
         "env_variables": []

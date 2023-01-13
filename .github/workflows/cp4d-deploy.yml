@@ -1,0 +1,46 @@
+name: cpdctl
+
+on:
+  push:
+    branches: [ "prd" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+
+  run-training-jobs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: mlops-churn-prediction-45
+
+      - name: Download cdpctl
+        run: |
+          chmod +x mlops-churn-prediction-45/assets/scripts/*.sh
+          mlops-churn-prediction-45/assets/scripts/download-cpdctl.sh
+
+      - name: Set up cpdctl credentials
+        env:
+          CPD_USER_NAME: ${{ secrets.CPD_USER_NAME }}
+          CPD_USER_PASSWORD: ${{ secrets.CPD_USER_PASSWORD }}
+          CPD_URL: "https://cpd-cpd.itzroks-270001318b-p1ick6-4b4a324f027aea19c5cbc0c3275c4656-0000.eu-gb.containers.appdomain.cloud"
+        run: |
+          mlops-churn-prediction-45/assets/scripts/configure-cpdctl.sh 
+
+      - name: List projects
+        run: |
+          mlops-churn-prediction-45/assets/scripts/list-projects.sh 
+
+      - name: Zip current repo to upload
+        run: |
+          rm -f /tmp/mlops-churn-prediction-45.zip
+          pushd mlops-churn-prediction-45 > /dev/null
+          zip -r /tmp/mlops-churn-prediction-45.zip *
+          popd > /dev/null
+
+      - name: Create project
+        run: |
+          mlops-churn-prediction-45/assets/scripts/import-project.sh mlops-churn-prediction-45 /tmp/mlops-churn-prediction-45.zip
