@@ -14,20 +14,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        with:
-          path: mlops-churn-prediction-46
 
       - name: Ensure scripts are runnable
         run: |
-          chmod +x mlops-churn-prediction-46/src/scripts/*.sh
-
-      - name: Show environment variables
-        run: |
-          env
+          chmod +x src/scripts/*.sh
 
       - name: Download cdpctl
         run: |
-          mlops-churn-prediction-46/src/scripts/download-cpdctl.sh
+          src/scripts/download-cpdctl.sh
 
       - name: Set up cpdctl credentials
         env:
@@ -35,10 +29,11 @@ jobs:
           CPD_USER_PASSWORD: ${{ secrets.CPD_USER_PASSWORD }}
           CPD_URL: ${{ vars.CPD_URL }}
         run: |
-          mlops-churn-prediction-46/src/scripts/configure-cpdctl.sh
+          src/scripts/configure-cpdctl.sh
 
       - name: Import and code package and run job
         env:
           CURRENT_BRANCH: ${{ vars.GITHUB_REF_NAME }}
+          REPO_NAME: ${{ vars.GITHUB_REPOSITORY }}
         run: |
-          mlops-churn-prediction-46/src/scripts/import-code-package.sh
+          src/scripts/import-code-package.sh
