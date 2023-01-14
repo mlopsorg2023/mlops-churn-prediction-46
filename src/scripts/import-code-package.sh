@@ -1,6 +1,8 @@
 #! /bin/bash
 export PATH=$PATH:$HOME/bin
 
+env
+
 BASE_REPO_NAME=$(basename ${REPO_NAME})
 BASE_SPACE_NAME=${BASE_REPO_NAME}
 ENVIRONMENT_NAME="Runtime 22.2 on Python 3.10"
