@@ -32,6 +32,6 @@ jobs:
         run: |
           src/scripts/configure-cpdctl.sh
 
-      - name: Import and code package and run job
+      - name: Run deployment jobs
         run: |
-          src/scripts/import-code-package.sh
+          src/scripts/run-deployment-jobs.sh
