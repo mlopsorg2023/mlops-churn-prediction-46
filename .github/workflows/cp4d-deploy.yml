@@ -2,7 +2,7 @@ name: train-and-deploy-churn-model
 
 on:
   push:
-    branches: [ "prd" ]
+    branches: [ "uat", "prd" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
