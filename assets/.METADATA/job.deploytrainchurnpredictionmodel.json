@@ -9,7 +9,8 @@
     "asset_id": "job.deploytrainchurnpredictionmodel",
     "asset_attributes": [
       "job"
-    ]
+    ],
+    "description": "Train churn prediction model"
   },
   "entity": {
     "job": {
