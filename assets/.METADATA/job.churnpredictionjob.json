@@ -1,12 +1,12 @@
 {
   "metadata": {
-    "name": "churn-prediction-job",
+    "name": "deploy-churn-prediction-model-job",
     "asset_type": "job",
     "origin_country": "us",
     "asset_category": "USER",
     "created_at": "2023-01-12T12:44:02Z",
     "created": 1673527442444,
-    "asset_id": "job.churnpredictionjob",
+    "asset_id": "job.deploychurnpredictionmodeljob",
     "asset_attributes": [
       "job"
     ]
@@ -16,7 +16,7 @@
       "asset_ref_type": "notebook",
       "configuration": {
         "env_id": "rt222py",
-        "file_ref": "src/customer-churn-prediction.ipynb",
+        "file_ref": "src/train-churn-prediction.ipynb",
         "entrypoint": "",
         "env_type": "notebook",
         "env_variables": []
