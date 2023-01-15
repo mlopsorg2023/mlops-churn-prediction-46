@@ -17,6 +17,7 @@ jobs:
 
       - name: Ensure scripts are runnable
         run: |
+          jq --version
           chmod +x src/scripts/*.sh
 
       - name: Download cdpctl
