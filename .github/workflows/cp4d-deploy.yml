@@ -27,7 +27,7 @@ jobs:
       - name: Set up cpdctl credentials
         env:
           CPD_USER_NAME: ${{ secrets.CPD_USER_NAME }}
-          CPD_USER_PASSWORD: ${{ secrets.CPD_USER_PASSWORD }}
+          CPD_USER_APIKEY: ${{ secrets.CPD_USER_APIKEY }}
           CPD_URL: ${{ vars.CPD_URL }}
         run: |
           src/scripts/configure-cpdctl.sh
